@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'Data_Tranfer_API.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
+        'HOST': 'apidb.cisebersdotq.us-east-1.rds.amazonaws.com',
         'PORT': '3306',
-        'USER': 'root',
+        'USER': 'admin',
         'PASSWORD': 'wgnJLZ56',
-        'NAME': 'employees_db',
+        'NAME': 'Company_db',
         'OPTIONS':{
             'init_command': "SET sql_mode = 'STRICT_TRANS_TABLES'"
         }

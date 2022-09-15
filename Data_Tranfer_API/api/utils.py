@@ -7,7 +7,7 @@ def validate_name(name):
     return type(name) == str and len(name) > 0
 
 def validate_datetime(datetime):
-    match = re.fullmatch(r'[d]{4}-[d]{2}-[d]{2} [d]{2}:[d]{2}:[d]{2}', datetime)
+    match = re.fullmatch(r'[\d]{4}-[\d]{2}-[\d]{2} [\d]{2}:[\d]{2}:[\d]{2}', datetime)
 
     return bool(match)
 

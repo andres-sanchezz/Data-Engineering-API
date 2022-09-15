@@ -53,6 +53,7 @@ class CompanyView(View):
                 for d in data
                 if validate_employee(d)
             ]
+            
             Hired_Employee.objects.bulk_create(batch)
         else:
             response = {'message': 'Table not found...'}
