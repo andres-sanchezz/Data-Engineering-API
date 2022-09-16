@@ -35,36 +35,33 @@ def lambda_handler():
         'namespace': 'company',
         'type': 'record',
         'fields': [
-            {'name': 'id', 'type': 'string'},
+            {'name': 'id', 'type': 'int'},
             {'name': 'name', 'type': 'string'},
-            {'name': 'timestamp', 'type': 'string'},
-            {'name': 'department_id', 'type': 'int'},
-            {'name': 'job_id', 'type': 'int'}
+            {'name': 'datetime', 'type': 'string'},
+            {'name': 'department_id_id', 'type': 'int'},
+            {'name': 'job_id_id', 'type': 'int'}
         ]
     }
 
     parsed_schema = parse_schema(schema)
 
+    data['datetime'] = data['datetime'].values.astype(str)
     records = data.to_dict('records')
 
     with open('hired_employee.avro', 'wb') as out:
         writer(out, parsed_schema, records)
 
-    s3_client.put_object(
-        Body='hired_employee.avro',
-        Bucket='backup-compnay-bucket', 
-        Key='hired_employee.avro'
-    )
+    s3_client.upload_file('hired_employee.avro', 'backup-compnay-bucket', 'hired_employee.avro')
 
     data = pd.read_sql("select * from Company_db.api_departments", conn)
 
     schema = {
-        'doc': 'BACKUP',
-        'name': 'BACKUP',
-        'namespace': 'company',
+        'doc': 'Database backup',
+        'name': 'Backup',
+        'namespace': 'test',
         'type': 'record',
         'fields': [
-            {'name': 'id', 'type': 'string'},
+            {'name': 'id', 'type': 'int'},
             {'name': 'department', 'type': 'string'}
         ]
     }
@@ -76,11 +73,7 @@ def lambda_handler():
     with open('departments.avro', 'wb') as out:
         writer(out, parsed_schema, records)
 
-    s3_client.put_object(
-        Body='departments.avro',
-        Bucket='backup-compnay-bucket', 
-        Key='departments.avro'
-    )
+    s3_client.upload_file('departments.avro', 'backup-compnay-bucket', 'departments.avro')
 
     data = pd.read_sql("select * from Company_db.api_jobs", conn)
 
@@ -90,7 +83,7 @@ def lambda_handler():
         'namespace': 'company',
         'type': 'record',
         'fields': [
-            {'name': 'id', 'type': 'string'},
+            {'name': 'id', 'type': 'int'},
             {'name': 'job', 'type': 'string'}
         ]
     }
@@ -102,12 +95,8 @@ def lambda_handler():
     with open('jobs.avro', 'wb') as out:
         writer(out, parsed_schema, records)
 
-    s3_client.put_object(
-        Body='jobs.avro',
-        Bucket='backup-compnay-bucket', 
-        Key='jobs.avro'
-    )
+    s3_client.upload_file('jobs.avro', 'backup-compnay-bucket', 'jobs.avro')
 
     return "Backup items from RDS MySQL table"
 
-print(lambda_handler())
+lambda_handler()
