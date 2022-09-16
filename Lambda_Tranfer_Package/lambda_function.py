@@ -45,7 +45,7 @@ def lambda_handler(event, context):
                 results.append(row)
                 
             for line in results:
-                cur.execute('insert into api_jobs (id, department) values({0}, "{1}")'.format(line['id'],line['department']))
+                cur.execute('insert into api_jobs (id, job) values({0}, "{1}")'.format(line['id'],line['job']))
         elif object.startswith('hired_employees'):
             for row in csv.DictReader(lines,fieldnames=['id','name','datetime','department_id','job_id']):
                 results.append(row)
