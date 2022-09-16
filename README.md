@@ -1,5 +1,7 @@
 # Data-Engineering-API
 
+##Description
+
 A Rest API was created to solve some data transactions from a company using the python framework django. It solves the requirements mentioned in [Proporsal For Coding Challenge](https://github.com/eafit-201710143010/Data-Engineering-API/blob/main/Proposal%20for%20coding%20challenge%20(1)%20(4).pdf) this way:
 
 * Move historic data to new database
@@ -44,3 +46,32 @@ This method takes into account the data rules defined in the problem.
 **Bucket for saving and recover Backup**
 
 ![image](https://user-images.githubusercontent.com/30332010/190580079-f7f24ce7-113d-4dd9-99e6-cb49cea14591.png)
+
+## Execution on windows
+
+* Data_Transfer_API
+
+For setting up and activate the virtual enviroment run the following command:
+
+```
+virtualenv -p /home/username/opt/python-3.10.1/bin/python3 venv
+source .\env\Scripts\Activate.ps1
+```
+
+Then you should be able to start the server by executing:
+
+```
+python manage.py runserver 0:8000
+```
+
+* Lambda_Backup_Package
+
+This feature is developed to create a Lambda function, so you could upload the .zip file in the folder to create it. But it can be executed on local by executing the Lambda handler manually in the main python module lambda_function.py
+
+* Lambda_Restore_Package
+
+This feature is developed to create a Lambda function, so you could upload the .zip file in the folder to create it. But it can be executed on local by executing the Lambda handler manually in the main python module lambda_function.py
+
+* Lambda_Transfer_Package
+
+This feature is developed to create a Lambda function, so you could upload the .zip file in the folder to create it. But it can be executed on local by executing the Lambda handler manually in the main python module lambda_function.py
