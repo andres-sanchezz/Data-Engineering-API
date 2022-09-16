@@ -1,6 +1,6 @@
 # Data-Engineering-API
 
-A Rest API was created to solve some data transactions from a company using the python framework django. It solves the requirements mentioned in Proporsal For Coding Challenge this way:
+A Rest API was created to solve some data transactions from a company using the python framework django. It solves the requirements mentioned in [Proporsal For Coding Challenge](https://github.com/eafit-201710143010/Data-Engineering-API/blob/main/Proposal%20for%20coding%20challenge%20(1)%20(4).pdf) this way:
 
 * Move historic data to new database
 For this requirements it was used AWS S3, Lambda and Stepfunctions to create a flow that would be triggered when csv files with hitoric data where uploaded into a specific S3 Bucket to insert the data using [This Lambda](https://github.com/eafit-201710143010/Data-Engineering-API/tree/main/Lambda_Tranfer_Package) functions automaticlly.
