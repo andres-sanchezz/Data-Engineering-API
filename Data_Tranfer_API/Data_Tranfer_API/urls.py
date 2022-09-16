@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('get_employees_by_quarter/', include('get_employees_by_quarter.urls')),
-    path('get_department_more_employee_hired', include('get_department_more_employee_hired.urls'))
+    path('get_department_more_employee_hired/', include('get_department_more_employee_hired.urls'))
 ]
