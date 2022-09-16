@@ -26,7 +26,7 @@ except pymysql.MySQLError as e:
     
 logger.info("SUCCESS: Connection to RDS MySQL instance succeeded")
 
-def lambda_handler():    
+def lambda_handler(event, context):    
     data = pd.read_sql("select * from Company_db.api_hired_employee", conn)
 
     schema = {
@@ -98,5 +98,3 @@ def lambda_handler():
     s3_client.upload_file('jobs.avro', 'backup-compnay-bucket', 'jobs.avro')
 
     return "Backup items from RDS MySQL table"
-
-lambda_handler()

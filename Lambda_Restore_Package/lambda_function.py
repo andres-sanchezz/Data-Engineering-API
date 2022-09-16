@@ -26,7 +26,7 @@ except pymysql.MySQLError as e:
     
 logger.info("SUCCESS: Connection to RDS MySQL instance succeeded")
 
-def lambda_handler():
+def lambda_handler(event, context):
     conn.execute('SET FOREIGN_KEY_CHECKS = 0;')
     avro_records = []
 
@@ -66,5 +66,3 @@ def lambda_handler():
     conn.execute('SET FOREIGN_KEY_CHECKS = 1;')
 
     return "Backup items from RDS MySQL table"
-
-print(lambda_handler())
