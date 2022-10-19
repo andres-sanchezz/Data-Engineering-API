@@ -41,7 +41,7 @@ This method takes into account the data rules defined in the problem.
 
 * Feature for Restore tables from AVRO format
 
-  [This feature](https://github.com/eafit-201710143010/Data-Engineering-API/tree/main/Lambda_Restore_Package) was developed using AWS Lambda functions due to its sporadic executions, so it takes files in AVRO format from an AWS Bucket, and transforms it to insert the data into database tables.
+[This feature](https://github.com/eafit-201710143010/Data-Engineering-API/tree/main/Lambda_Restore_Package) was developed using AWS Lambda functions due to its sporadic executions, so it takes files in AVRO format from an AWS Bucket, and transforms it to insert the data into database tables.
 
 **Bucket for saving and recover Backup**
 
